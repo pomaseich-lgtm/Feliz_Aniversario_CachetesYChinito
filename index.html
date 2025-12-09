@@ -1038,21 +1038,18 @@ function flipCard(card) {
 
     let estado = parseInt(card.dataset.state);
 
-    // Estado 0 → normal → fullscreen
     if (estado === 0) {
         card.classList.add("fullscreen");
         card.dataset.state = "1";
         return;
     }
 
-    // Estado 1 → fullscreen → flip (volver la tarjeta)
     if (estado === 1) {
         card.classList.add("flipped");
         card.dataset.state = "2";
         return;
     }
 
-    // Estado 2 → flipped → volver a normal
     if (estado === 2) {
         card.classList.remove("flipped");
         card.classList.remove("fullscreen");
@@ -1060,10 +1057,28 @@ function flipCard(card) {
         return;
     }
 }
+
+
+// 📱 Manejar TOUCH para móviles
+document.addEventListener("touchstart", function(e) {
+    let card = e.target.closest(".card");
+    if (card) {
+        flipCard(card);
+    }
+});
+
+// 🖱 Desktop sigue funcionando normal
+document.addEventListener("click", function(e) {
+    let card = e.target.closest(".card");
+    if (card) {
+        flipCard(card);
+    }
+});
 </script>
 
 </body>
 </html>
+
 
 
 
