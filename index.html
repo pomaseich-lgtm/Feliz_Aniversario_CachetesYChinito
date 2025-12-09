@@ -1030,27 +1030,27 @@
 </div>
 <!-- Script para flip -->
 <script>
-function flipCard(card) {
+function flipCard(event, card) {
+    event.stopPropagation(); // 🔥 El toque NO se pierde
 
-    if (!card.dataset.state) {
-        card.dataset.state = "0";
-    }
+    let state = card.dataset.state ? parseInt(card.dataset.state) : 0;
 
-    let estado = parseInt(card.dataset.state);
-
-    if (estado === 0) {
+    // 1 → Pantalla completa
+    if (state === 0) {
         card.classList.add("fullscreen");
         card.dataset.state = "1";
         return;
     }
 
-    if (estado === 1) {
+    // 2 → Flip
+    if (state === 1) {
         card.classList.add("flipped");
         card.dataset.state = "2";
         return;
     }
 
-    if (estado === 2) {
+    // 3 → Regresar a normal
+    if (state === 2) {
         card.classList.remove("flipped");
         card.classList.remove("fullscreen");
         card.dataset.state = "0";
@@ -1059,25 +1059,18 @@ function flipCard(card) {
 }
 
 
-// 📱 Manejar TOUCH para móviles
-document.addEventListener("touchstart", function(e) {
-    let card = e.target.closest(".card");
-    if (card) {
-        flipCard(card);
-    }
-});
-
-// 🖱 Desktop sigue funcionando normal
-document.addEventListener("click", function(e) {
-    let card = e.target.closest(".card");
-    if (card) {
-        flipCard(card);
+// 📱 Evento táctil extra para móviles (importantísimo)
+document.addEventListener("touchend", function(e) {
+    let c = e.target.closest(".card");
+    if (c) {
+        flipCard(e, c);
     }
 });
 </script>
 
 </body>
 </html>
+
 
 
 
