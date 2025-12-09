@@ -1,0 +1,242 @@
+/* ------------------ GENERAL ------------------ */
+body {
+  margin: 0;
+  font-family: 'Poppins', Arial, sans-serif;
+  background-color: #fff0f5;
+}
+
+/* ------------------ BANNER ------------------ */
+.menu-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+  padding: 10px 20px;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.menu-title {
+  font-size: 1.8em;
+  color: black;
+  font-weight: 600;
+  margin: 0;
+}
+
+.menu-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.menu-item {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #ff6f91, #ff9671);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  white-space: nowrap;
+}
+
+.menu-item:hover {
+  background: linear-gradient(135deg, #ff85a1, #ffa07a);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
+
+/* ------------------ CARDS ------------------ */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.cards12{
+    padding:12px;
+    margin-right:5px
+}
+
+
+
+/* Estructura flip */
+.card {
+  width: 200px;
+  height: 200px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  border-radius: 15px;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-back {
+  background: linear-gradient(135deg, #ff6f91, #ff9671);
+  color: white;
+  font-weight: bold;
+  transform: rotateY(180deg);
+  padding: 10px;
+  text-align: center;
+}
+
+/* ------------------ RESPONSIVE ------------------ */
+
+/* Tablets grandes */
+@media (max-width: 1200px) {
+  .card {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+/* Tablets normales */
+@media (max-width: 992px) {
+  .card {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+  .menu-banner {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .menu-item {
+    width: 100%;
+    text-align: center;
+  }
+  .card {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 576px) {
+  .card {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+
+/* GRID DE 3 COLUMNAS EN PC, 1 EN CELULAR */
+.videos-section {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* GRID DE VIDEOS */
+.videos-section {
+    width: 95%;
+    max-width: 1600px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 35px;
+}
+
+/* TARJETA */
+.video-card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.video-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+}
+
+/* VIDEO RESPONSIVE */
+.contenedor-video {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 */
+}
+
+.contenedor-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* TEXTO */
+.video-texto {
+    font-size: 16px;
+    padding: 15px;
+    text-align: center;
+    color: #333;
+}
+
+/* --- RESPONSIVE BREAKPOINTS --- */
+
+/* Tablets */
+@media (max-width: 992px) {
+    .menu-title {
+        font-size: 22px;
+    }
+    .menu-items a {
+        padding: 7px 14px;
+    }
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+    .videos-section {
+        grid-template-columns: 1fr !important;
+        width: 90%;
+    }
+    .menu-banner {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+}
