@@ -1,59 +1,55 @@
 /* ------------------ GENERAL ------------------ */
 body {
-  margin: 0;
-  font-family: 'Poppins', Arial, sans-serif;
-  background-color: #fff0f5;
+    margin: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #fff0f5;
 }
 
 /* ------------------ BANNER ------------------ */
 .menu-banner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: linear-gradient(90deg, #ff9a9e, #fad0c4);
-  padding: 10px 20px;
-  flex-wrap: wrap;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+    padding: 10px 20px;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 .menu-title {
-  font-size: 2rem;
-  color: #fff;
-  font-weight: 600;
-  margin: 0;
+    font-size: 2rem;
+    color: #fff;
+    font-weight: 600;
+    margin: 0;
 }
 
 .menu-items {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
 .menu-item {
-  color: white;
-  text-decoration: none;
-  padding: 10px 20px;
-  background: linear-gradient(135deg, #ff6f91, #ff9671);
-  border-radius: 10px;
-  transition: all 0.3s ease;
-  font-weight: 500;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  white-space: nowrap;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #ff6f91, #ff9671);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    white-space: nowrap;
 }
 
 .menu-item:hover {
-  background: linear-gradient(135deg, #ff85a1, #ffa07a);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+    background: linear-gradient(135deg, #ff85a1, #ffa07a);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
 }
 
-/* ------------------ CARDS ------------------ */
-/* ------------------ CARDS ------------------ */
-
-
-/* CONTENEDOR DE LAS CARDS */
+/* ------------------ FULLSCREEN ------------------ */
 
 .card.fullscreen {
     position: fixed !important;
@@ -62,36 +58,20 @@ body {
     width: 100vw !important;
     height: 100vh !important;
     z-index: 9999;
-    margin: 0;
-    border-radius: 0;
+    margin: 0 !important;
+    border-radius: 0 !important;
     background: #ffffff;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    animation: zoomIn 0.25s ease; /* ✨ Animación suave */
+    animation: zoomIn 0.25s ease;
 }
 
-
-@media (max-width: 600px) {
-    .card.fullscreen {
-        width: 92vw !important;
-        height: 82vh !important;
-
-        top: 50%;
-        left: 50%;
-        border-radius: 22px !important;
-        transform: translate(-50%, -50%) scale(1);
-        box-shadow: 0 0 22px rgba(0,0,0,0.25);
-    }
-
-    .card.fullscreen .card-front img {
-        object-fit: contain;
-        padding: 10px;
-    }
+.card.fullscreen .card-inner {
+    height: 100% !important;
 }
-
 
 .card.fullscreen .card-front img {
     width: 100%;
@@ -100,6 +80,30 @@ body {
     object-position: center;
 }
 
+@media (max-width: 600px) {
+    .card.fullscreen {
+        width: 92vw !important;
+        height: 82vh !important;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) !important;
+        border-radius: 22px !important;
+        box-shadow: 0 0 25px rgba(0,0,0,0.25);
+    }
+
+    .card.fullscreen .card-front img {
+        padding: 10px;
+        object-fit: contain;
+    }
+}
+
+@keyframes zoomIn {
+    0% { transform: scale(0.85); opacity: 0.4; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* ------------------ GRID DE CARDS ------------------ */
+
 .cards-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -107,108 +111,85 @@ body {
     padding: 20px;
 }
 
-/* CARD GENERAL */
+/* ------------------ CARD BASE ------------------ */
+
 .card {
     width: 100%;
-    aspect-ratio: 3 / 4; /* Mantiene proporción exacta */
+    aspect-ratio: 3 / 4;
     perspective: 1000px;
     cursor: pointer;
-    position: relative;  /* NECESARIO */
-    overflow: hidden;    /* 📌 evita salidas */
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
-@keyframes zoomIn {
-    0% {
-        transform: scale(0.85);
-        opacity: 0.4;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
+/* ------------------ ANIMACIÓN DE FLIP ------------------ */
 
-
-/* ROTACIÓN */
 .card-inner {
     width: 100%;
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.7s;
-     pointer-events: auto;
-
+    transition: transform 0.7s ease;
 }
-
-
-
-
 
 .card.flipped .card-inner {
     transform: rotateY(180deg);
 }
 
-/* FRONT Y BACK */
+/* ------------------ CARA FRONTAL Y TRASERA ------------------ */
+
 .card-front, .card-back {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
     border-radius: 12px;
-    overflow: hidden; /* Evita desbordes */
+    overflow: hidden;
 }
 
+/* --- FRONT (IMAGEN) --- */
 
-
-/* 🔥 IMÁGENES SIEMPRE COMPLETAS Y CENTRADAS */
 .card-front {
-    width: 100%;
-    height: 100%;
     display: flex;
-    justify-content: center;   /* centra horizontal */
-    align-items: center;        /* centra vertical */
-    overflow: hidden;
-    background-color:white;     /* o transparente */
+    justify-content: center;
+    align-items: center;
+    background-color: white;
 }
 
 .card-front img {
     width: 100%;
     height: 100%;
-    object-fit: contain;        /* 🔥 imagen completa sin recortes */
+    object-fit: contain;
     object-position: center center;
     display: block;
 }
 
-/* TRASERA */
+/* --- BACK (MENSAJE) --- */
+
 .card-back {
     background: #ffe4ec;
     color: #333;
     border: 2px solid #ff8fb6;
     font-size: clamp(0.85rem, 2vw, 1.1rem);
     font-weight: bold;
-
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 12px;
     text-align: center;
 
-    padding: 10px;
     transform: rotateY(180deg);
-
-    height: 100%;
-    max-height: 100%;   /* 📌 CLAVE */
-    overflow: hidden;   /* 📌 NO CRECE NUNCA */
     line-height: 1.2;
-    word-wrap: break-word; /* Para que no se salga el texto */
     box-sizing: border-box;
+    overflow: hidden;
 }
 
+/* ------------------ RESPONSIVE MOVIL MUY PEQUEÑO ------------------ */
 
-
-/* Móviles muy pequeños */
 @media (max-width: 480px) {
-  .card {
-    width: clamp(110px, 45vw, 150px);
-    height: clamp(110px, 45vw, 150px);
-  }
+    .card {
+        width: clamp(110px, 46vw, 160px);
+        height: clamp(140px, 60vw, 220px);
+    }
 }
