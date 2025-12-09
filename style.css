@@ -52,18 +52,21 @@ body {
 /* ------------------ CARDS ------------------ */
 /* ------------------ CARDS ------------------ */
 
+/* ------------------ CARDS ------------------ */
+
 /* CONTENEDOR DE LAS CARDS */
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 25px;
+    padding: 30px 20px;
+    justify-content: center;
 }
 
 /* CARD GENERAL */
 .card {
     width: 100%;
-    aspect-ratio: 3/4; /* Proporción uniforme */
+    aspect-ratio: 3 / 4; /* Proporción estable para PC y móviles */
     perspective: 1000px;
     cursor: pointer;
 }
@@ -82,23 +85,24 @@ body {
     transform: rotateY(180deg);
 }
 
-/* FRONT Y BACK */
-.card-front, .card-back {
+/* FRONT & BACK */
+.card-front,
+.card-back {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    border-radius: 12px;
-    overflow: hidden; /* Evita desbordes */
+    border-radius: 15px;
+    overflow: hidden; /* evita que nada se salga */
 }
 
-/* 🔥 IMÁGENES SIEMPRE COMPLETAS Y CENTRADAS */
+/* 🔥 IMAGENES COMPLETAS, CENTRADAS Y RESPONSIVE */
 .card-front img {
     width: 100%;
     height: 100%;
-    object-fit: contain;   /* 📌 Que la imagen completa esté dentro */
-    object-position: center;
-    background-color: #fff; /* Relleno suave para imágenes con bordes */
+    object-fit: contain;      /* La imagen completa siempre visible */
+    object-position: center;  /* Centrada perfectamente */
+    background-color: #ffffff; /* relleno limpio */
     display: block;
 }
 
@@ -106,22 +110,38 @@ body {
 .card-back {
     background: #ffe4ec;
     color: #333;
-    font-size: 1.3rem;
+    border: 2px solid #ff8fb6;
+    font-size: 1.2rem;
     font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    padding: 12px;
     transform: rotateY(180deg);
-    border: 2px solid #ff8fb6;
 }
 
+/* ------------------ RESPONSIVE NATURAL ------------------ */
+/* Estas reglas NO modifican proporciones, solo adaptan el grid para móviles */
 
+/* Tablets */
+@media (max-width: 992px) {
+    .cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+}
 
-/* Móviles muy pequeños */
+/* Celulares */
+@media (max-width: 768px) {
+    .cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 20px;
+    }
+}
+
+/* Celulares muy pequeños */
 @media (max-width: 480px) {
-  .card {
-    width: clamp(110px, 45vw, 150px);
-    height: clamp(110px, 45vw, 150px);
-  }
+    .cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 15px;
+    }
 }
