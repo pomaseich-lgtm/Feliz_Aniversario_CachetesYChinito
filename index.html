@@ -1032,7 +1032,6 @@
 <script>
 function flipCard(card) {
 
-    // si la tarjeta NO tiene estado, se lo creamos
     if (!card.dataset.state) {
         card.dataset.state = "0";
     }
@@ -1042,12 +1041,11 @@ function flipCard(card) {
     // Estado 0 → normal → fullscreen
     if (estado === 0) {
         card.classList.add("fullscreen");
-        document.querySelector(".cards-container").style.pointerEvents = "none";
         card.dataset.state = "1";
         return;
     }
 
-    // Estado 1 → fullscreen → flip
+    // Estado 1 → fullscreen → flip (volver la tarjeta)
     if (estado === 1) {
         card.classList.add("flipped");
         card.dataset.state = "2";
@@ -1058,12 +1056,12 @@ function flipCard(card) {
     if (estado === 2) {
         card.classList.remove("flipped");
         card.classList.remove("fullscreen");
-        document.querySelector(".cards-container").style.pointerEvents = "auto";
         card.dataset.state = "0";
         return;
     }
 }
 </script>
+
 </body>
 </html>
 
