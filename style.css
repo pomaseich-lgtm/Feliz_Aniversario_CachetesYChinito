@@ -51,6 +51,12 @@ body {
 
 /* ------------------ FULLSCREEN ------------------ */
 
+.card {
+  touch-action: manipulation;
+  cursor: pointer;
+}
+
+
 .card.fullscreen {
     position: fixed !important;
     top: 0;
@@ -198,4 +204,5 @@ body {
         height: clamp(140px, 60vw, 220px);
     }
 }
+
 
