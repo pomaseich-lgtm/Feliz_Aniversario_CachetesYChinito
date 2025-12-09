@@ -78,7 +78,12 @@ body {
     transform-style: preserve-3d;
     transition: transform 0.7s;
      pointer-events: auto;
+
 }
+
+
+
+
 
 .card.flipped .card-inner {
     transform: rotateY(180deg);
@@ -93,6 +98,8 @@ body {
     border-radius: 12px;
     overflow: hidden; /* Evita desbordes */
 }
+
+
 
 /* 🔥 IMÁGENES SIEMPRE COMPLETAS Y CENTRADAS */
 .card-front {
@@ -125,7 +132,6 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    pointer-events: none;
 
     padding: 10px;
     transform: rotateY(180deg);
